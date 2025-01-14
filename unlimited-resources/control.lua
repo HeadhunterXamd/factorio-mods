@@ -1,8 +1,9 @@
 local refillAmount = settings.global["resource-ore-refill-amount"].value;
 local refillAmountOil = settings.global["resource-oil-refill-amount"].value * 3000; -- percentage times 3000
-local refillInterval = settings.global["resource-refill-interval"].value * 60; -- ticks (18000 = 5min)
+local refillInterval = settings.global["resource-refill-interval"].value * 60;      -- ticks (18000 = 5min)
 local refillOreEnabled = settings.global["resource-refill-ore-enabled"].value;
 local refillOilEnabled = settings.global["resource-refill-oil-enabled"].value;
+local chunkCount = settings.global["resource-refill-chunk-amount"].value;
 -- Iterator memory to spread refill out over multiple ticks
 local refillActive = false;
 local currentSurface = nil;
@@ -75,7 +76,7 @@ function refillAllResources()
     if not surface then
         return true
     end
-    local chunkList = getNextChunks(surface, 50);
+    local chunkList = getNextChunks(surface, chunkCount);
 
     if #chunkList == 0 then
         currentChunk = 1;
@@ -120,6 +121,7 @@ script.on_event(defines.events.on_runtime_mod_setting_changed, function(event)
     refillInterval = settings.global["resource-refill-interval"].value * 60;
     refillOreEnabled = settings.global["resource-refill-ore-enabled"].value;
     refillOilEnabled = settings.global["resource-refill-oil-enabled"].value;
+    chunkCount = settings.global["resource-refill-chunk-amount"].value;
 end)
 
 -- Increase resource amount when generated

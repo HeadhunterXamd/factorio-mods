@@ -1,4 +1,4 @@
-data:extend({{
+data:extend({ {
     name = "resource-ore-refill-amount",
     type = "int-setting",
     setting_type = "runtime-global",
@@ -29,4 +29,10 @@ data:extend({{
     setting_type = "runtime-global",
     default_value = true,
     order = "e"
-}});
+}, {
+    name = "resource-refill-chunk-amount",
+    type = "int-setting",
+    setting_type = "runtime-global",
+    default_value = 50,
+    order = "f"
+} });

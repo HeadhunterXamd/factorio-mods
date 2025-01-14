@@ -12,6 +12,9 @@ Having refill enabled will cause lag spikes on the interval, this is likely to c
 
 # Change log
 
+### 1.0.11
+- added the chunk count as setting
+
 ### 1.0.10
 
 - Updated for version 1.1
